@@ -413,9 +413,6 @@ html{scroll-behavior:smooth}
 .foot-bottom{border-top:1px solid var(--line);padding-block:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;color:var(--ink-faint);font-size:0.82rem;font-family:var(--f-mono);letter-spacing:0.02em}
 
 /* editable affordance (Pretext live-edit) */
-[contenteditable="true"]{outline:none;border-radius:2px;transition:box-shadow .15s}
-[contenteditable="true"]:hover{box-shadow:0 0 0 1px var(--line-strong)}
-[contenteditable="true"]:focus{box-shadow:0 0 0 2px var(--accent)}
 
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important}
@@ -794,10 +791,7 @@ html{scroll-behavior:smooth}
     try { await document.fonts.ready; } catch {}
     nodes.forEach((el) => {
       el.style.overflow = 'visible';
-      el.setAttribute('contenteditable', 'true');
-      el.setAttribute('spellcheck', 'false');
       prep(el);
-      el.addEventListener('input', () => { prep(el); relayout(); });
     });
     relayout();
     if ('ResizeObserver' in window) {
